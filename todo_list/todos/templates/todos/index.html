@@ -1,10 +1,52 @@
-{% if todos %}
-    <ul>
-    {% for todo in todos %}
-        <li><a href="{% url 'todos:detail' todo.id %}">name: {{ todo.name }}</a></li>
-        <hr>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No todos are available.</p>
-{% endif %}
+{% load  static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'todos/css/todos.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-white">
+                    <div class="card-body">
+
+                        <form action="" method="post">
+                            <input type="text" class="form-control add-task" placeholder="New Task..." name="name">
+                            <br>
+                            <br>
+                            <input type="text" class="form-control add-task" placeholder="Desctiption ..." name="desctiption">
+                        </form>
+            <br>
+            <br>
+            <br>
+
+            
+                    {% if todos %}
+                            <div class="todo-list">
+                                {% for todo in todos %}
+                                    <div class="todo-item">
+                                        <div class="checker"><span class=""><input type="checkbox" name="{{ todo }}" value="{{ todo.id }}"></span></div>
+                                        <span>{{ todo.name}}</span>
+                                        <a href="{% url 'todos:done' todo_id=todo.id %}">done</a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                    {% endif %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script src="{% static 'todos/js/todos.js' %}"></script>
+
+</body>
+</html>

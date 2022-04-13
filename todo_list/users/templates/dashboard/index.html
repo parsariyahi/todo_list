@@ -1,3 +1,25 @@
 Hello, {{ user.username }}!
-
-<a href="{%url 'dashboard:logout'%}">logout</a>
+<hr>
+<hr>
+<hr>
+<hr>
+{% if todos %}
+    <ul>
+    {% for todo in todos %}
+        <li><a href="{% url 'todos:detail' todo.id %}">name: {{ todo.name }}</a></li>
+        <hr>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No todos are available.</p>
+{% endif %}
+<hr>
+<hr>
+<hr>
+<hr>
+<a href="{% url 'todos:create' %}">create todo</a>
+<hr>
+<hr>
+<hr>
+<hr>
+<a href="{% url 'dashboard:logout' %}">logout</a>

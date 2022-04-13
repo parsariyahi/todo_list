@@ -3,10 +3,15 @@ from django.contrib.auth import login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 
+from todos.models import Todo
+
 # Create your views here.
 @login_required(login_url='/usr/accounts/login/')
 def dashboard(request):
-    return render(request, 'dashboard/index.html')
+    todos = Todo.objects.filter(owner=request.user)
+    context = {'todos': todos}
+
+    return render(request, 'dashboard/index.html', context)
 
 
 def register(request):
