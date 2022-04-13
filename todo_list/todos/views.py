@@ -37,14 +37,12 @@ def create(request):
             new_todo = Todo(**data)
             new_todo.save()
 
-            return HttpResponseRedirect(reverse('todos:create'))
+            return HttpResponseRedirect(reverse('todos:index'))
 
-    return render(request, 'todos/create.html')
+    return render(request, 'todos/index.html')
 
 
 @login_required(login_url='/usr/accounts/login/')
 def done(request, todo_id):
-    if request.method == 'POST':
-            data = {
-                'data': todo_id
-            }
+    Todo.objects.get(id=todo_id).delete()
+    return HttpResponseRedirect(reverse('todos:index'))

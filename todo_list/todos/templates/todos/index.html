@@ -16,23 +16,26 @@
                 <div class="card card-white">
                     <div class="card-body">
 
-                        <form action="" method="post">
+                        <form action="{% url 'todos:create' %}" method="post">
+                            {% csrf_token %}
                             <input type="text" class="form-control add-task" placeholder="New Task..." name="name">
                             <br>
                             <br>
-                            <input type="text" class="form-control add-task" placeholder="Desctiption ..." name="desctiption">
+                            <input type="text" class="form-control add-task" placeholder="Desctiption ..." name="description">
+                            <br>
+                            <br>
+                            <input type="submit" value="create todo" name="create_todo">
+
                         </form>
             <br>
             <br>
             <br>
-
-            
                     {% if todos %}
                             <div class="todo-list">
                                 {% for todo in todos %}
                                     <div class="todo-item">
-                                        <div class="checker"><span class=""><input type="checkbox" name="{{ todo }}" value="{{ todo.id }}"></span></div>
                                         <span>{{ todo.name}}</span>
+                                        <a href="{% url 'todos:detail' todo_id=todo.id %}">ditail</a>
                                         <a href="{% url 'todos:done' todo_id=todo.id %}">done</a>
                                     </div>
                                 {% endfor %}
@@ -47,6 +50,16 @@
     
 
     <script src="{% static 'todos/js/todos.js' %}"></script>
+    
+    
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+    <hr>
+
+    <a href="{% url 'dashboard:index' %}">dashboard</a>
+
 
 </body>
 </html>
