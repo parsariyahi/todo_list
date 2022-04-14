@@ -91,7 +91,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
 
-#TODO uncomment these, these are making our users password more strong, but we are on production and we dont needed
+#NOTE: uncomment these, these are making our users password more strong, but we are on production and we dont needed
 AUTH_PASSWORD_VALIDATORS = [
     # {
     #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
