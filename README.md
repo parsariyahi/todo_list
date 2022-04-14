@@ -14,7 +14,7 @@ pip install -r requirements.txt
 ```
 
 
-### run the reqular process for django projects [read docs](https://www.djangoproject.com/start)
+### run the regular process for django projects [read docs](https://www.djangoproject.com/start)
 
 
 ### then run this command
